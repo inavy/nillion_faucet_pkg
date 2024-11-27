@@ -1,0 +1,41 @@
+2024.11.27
+
+# nillion_faucet_pkg 所在目录
+./nillion_faucet_pkg/
+
+############################################################
+conf.py
+
+# 修改 MAX_PROFILE
+MAX_PROFILE = 1
+
+# 修改 DEF_CAPTCHA_KEY
+DEF_CAPTCHA_KEY = 'your client key'
+
+# 修改 DEF_DING_TOKEN，没有就置空
+DEF_DING_TOKEN = 'your dingding token'  # noqa
+
+############################################################
+# purse_g01.csv Sample
+account,testnet-address,server-address
+g01,nillion186n7snfkcxxx,nillion1hg2xfxsmxxx
+g02,nillion186n7snfkcxxx,nillion1hg2xfxsmxxx
+############################################################
+# status_g01.csv Sample
+account,claim_time_1,claim_time_2
+g01,2024-11-26T14:57:38+0800,2024-11-26T14:58:26+0800
+g02,2024-11-27T13:19:38+0800,2024-11-27T13:20:26+0800
+############################################################
+# faucet_start.sh 里可以修改每次领水后 sleep 的时长(单位是秒)
+# 每次在 [sleep_sec_min, sleep_sec_max] 之间取一个随机数
+python nillion_faucet.py --sleep_sec_min=600 --sleep_sec_max=1800 --loop_interval=60
+############################################################
+
+cd /opt/app/chain/nillion_faucet/
+
+# g21
+# g01-g20
+# purse_g21.csv
+# status_g21.csv
+bash faucet_depoly.sh g21
+bash faucet_start.sh g21

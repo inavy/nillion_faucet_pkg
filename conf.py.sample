@@ -1,0 +1,55 @@
+"""
+Config File
+"""
+import logging
+
+# 本地启动端口
+# 查看端口是否被占用 netstat -ant|grep 9666
+DEF_LOCAL_PORT = 9666
+# 最多保留的 Chrome Profile 数量
+MAX_PROFILE = 1
+
+# 是否使用无头浏览器模式
+DEF_USE_HEADLESS = True
+# DEF_USE_HEADLESS = False
+
+# 调试模式
+# DEF_DEBUG = True
+DEF_DEBUG = False
+
+# 浏览器路径，置空时取 Chrome 的默认路径
+# DEF_PATH_BROWSER = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' # noqa
+# DEF_PATH_BROWSER = '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge' # noqa
+DEF_PATH_BROWSER = ''
+
+DEF_PATH_USER_DATA = 'chrome_profile'
+
+DEF_NUM_TRY = 5
+
+FILENAME_LOG = 'run.log'
+
+# https://yescaptcha.com/i/Af32Me
+DEF_CAPTCHA_KEY = 'xxxxx'
+# Chrome 插件所在的目录
+DEF_CAPTCHA_EXTENSION_PATH = 'YesCaptcha'
+EXTENSION_ID_YESCAPTCHA = 'jiofmdifioeejeilfkpegipdjiopiekl'
+
+# 遇到异常发钉钉消息，如果没有，置空，则不发钉钉消息
+DEF_DING_TOKEN = ''  # noqa
+
+# 账号列表
+DEF_PATH_DATA_PURSE = 'datas/purse'
+DEF_HEADER_PURSE = 'account,purse,proxy'
+
+# 记录账号状态信息
+DEF_PATH_DATA_STATUS = 'datas/status'
+DEF_HEADER_STATUS = 'account,claim_time_1,claim_time_2'
+############################################################
+# 配置日志
+s_format = '%(asctime)s %(levelname)s %(message)s'
+logging.basicConfig(
+    filename=FILENAME_LOG, level=logging.INFO,
+    format=s_format,
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger(__name__)
